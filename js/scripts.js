@@ -91,15 +91,48 @@ yourAge(2024, 27);
 // Crea una función que reciba dos números e imprima todos los números pares desde el primero hasta el segundo. Si recibe 2 y 12 imprimirá 2, 4, 6, 8, 10, 12.
 
 const evenNumbers = (numberA, numberB) => {
-    const create = numberA || numberB % 2 === 0;
+  if (numberA > numberB) {
+    [numberA, numberB] = [numberB, numberA];
+  }
 
-    for (let counter = 0; counter < numbers.length; counter++) {
-        console.log(numberA, numberB);
-}
+  if (numberA % 2 !== 0) {
+    numberA++;
+  }
+
+  for (let counter = numberA; counter <= numberB; counter += 2) {
+    console.log(counter);
+  }
+};
 
 evenNumbers(2, 12);
 
 // Crea una función que genere 2 arrays y los rellene con 5 números aleatorios cada uno, la función debe decir qué valores se han repetido en los dos arrays.
+
+const findRepeatedValues = () => {
+  const array1 = [];
+  const array2 = [];
+
+  for (let counter = 0; counter < 5; counter++) {
+    array1.push(Math.floor(Math.random() * 100) + 1);
+  }
+
+  for (let counter = 0; counter < 5; counter++) {
+    array2.push(Math.floor(Math.random() * 100) + 1);
+  }
+
+  console.log('Array 1:', array1);
+  console.log('Array 2:', array2);
+
+  console.log('Valores repetidos:');
+
+  for (let value of array1) {
+    if (array2.includes(value)) {
+      console.log(value);
+    }
+  }
+};
+
+findRepeatedValues();
 
 // Crea una función que reciba un número y te diga si es primo o no. Un número primo es aquel que sólo puede dividirse por si mismo
 
@@ -107,7 +140,34 @@ evenNumbers(2, 12);
   "Número: 2 - Cuadrado: 4 - Cubo: 8".
   Nota: Dentro del objeto Math existe el método pow. Math.pow(número, exponente) */
 
+const multiplyOfNumbers = numbers => {
+  for (const number of numbers) {
+    console.log(`Número: ${number}`);
+    console.log(`Cuadrado: ${Math.pow(number, 2)}`);
+    console.log(`Cubo: ${Math.pow(number, 3)}`);
+  }
+};
+
+multiplyOfNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 1]);
+
 // Crea una función que reciba una palabra e imprima por consola esa palabra pero con las vocales en mayúscula.
+
+function capitalVocals(word) {
+  let result = '';
+
+  for (let counter = 0; counter < word.length; counter++) {
+    const caracter = word[counter];
+    if ('aeiou'.includes(caracter)) {
+      result += caracter.toUpperCase();
+    } else {
+      result += caracter;
+    }
+  }
+
+  console.log(result);
+}
+
+capitalVocals('periquito');
 
 /* Crea una función que reciba una frase e imprima el número de veces que se repite cada vocal, por ejemplo para la frase "Enrique ordeña cabras", el resultado por consola debe ser:
   a: 3,
