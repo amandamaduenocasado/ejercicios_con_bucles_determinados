@@ -152,18 +152,43 @@ multiplyOfNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 1]);
 
 // Crea una función que reciba una palabra e imprima por consola esa palabra pero con las vocales en mayúscula.
 
+/* ¿POR QUÉ UTILIZAMOS ''? 
+
+- ES UNA CADENA VACÍA 
+
+'' representa una cadena de texto que no contiene ningún carácter. Es útil cuando quieres empezar a construir una cadena a partir de cero.
+
+- CONCATENACIÓN
+
+En tu función, a medida que recorres cada carácter de la palabra, vas añadiendo (concatenando) caracteres a result. Al inicializarlo como una cadena vacía, te aseguras de que puedas comenzar a agregarle caracteres desde el principio.
+
+Luego utilizamos: result += caracter; es una forma abreviada de escribir result = result + caracter
+
+let result = ''; // Inicializamos como cadena vacía
+
+result += 'p'; // Ahora result es 'p'
+result += 'e'; // Ahora result es 'pe'
+result += 'r'; // Ahora result es 'per'
+... 
+
+Si result no hubiera sido inicializado como una cadena vacía, no podrías concatenar los caracteres de forma efectiva, y podrías obtener un resultado inesperado. */
+
 function capitalVocals(word) {
   let result = '';
+  const vowels
 
   for (let counter = 0; counter < word.length; counter++) {
+    // Este bucle recorre cada carácter de la cadena word. counter es un índice que comienza en 0 y aumenta hasta que alcanza la longitud de word.
     const caracter = word[counter];
+    // En cada iteración del bucle, caracter almacena el carácter actual de word.
     if ('aeiou'.includes(caracter)) {
+    // Aquí verificamos si el carácter actual es una vocal, ya sea en minúscula o mayúscula. Usamos el método includes para comprobar si caracter está en la cadena 'aeiouAEIOU'.
       result += caracter.toUpperCase();
     } else {
+    // Si el carácter es una vocal, lo convertimos a mayúscula y lo agregamos a result. Si no es una vocal, simplemente lo agregamos tal cual:
       result += caracter;
     }
   }
-
   console.log(result);
 }
 
@@ -175,6 +200,27 @@ capitalVocals('periquito');
   i: 1,
   o: 1,
   u: 1 */
+
+  const vocalsCount = phrase => {
+  let aCounter = 0;
+  let eCounter = 0; 
+  let iCounter = 0;
+  let oCounter = 0; 
+  let uCounter = 0;
+
+  for (const letter of phrase.toLowerCase()) {
+    if (letter === 'a') {
+      aCounter++;
+    } else if (letter === 'e') {
+      eCounter
+    }
+  }
+}
+  console.log(à: ${aCounter}, )
+
+  
+
+  vocalsCount('Enrique ordeña cabras')
 
 // Crea una función que reciba dos palabras e intercale las letras de cada una para formar una nueva palabra. Si la función recibe (hola, adios) el resultado será "haodliao", pero si recibe (adios, hola) el resultado será "ahdoiloa"
 
