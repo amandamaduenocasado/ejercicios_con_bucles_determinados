@@ -173,26 +173,45 @@ result += 'r'; // Ahora result es 'per'
 
 Si result no hubiera sido inicializado como una cadena vacía, no podrías concatenar los caracteres de forma efectiva, y podrías obtener un resultado inesperado. */
 
-function capitalVocals(word) {
-  let result = '';
-  const vowels
-
+const capitalVocals = word => {
+  
+  let newWord = ''; 
+  
   for (let counter = 0; counter < word.length; counter++) {
     // Este bucle recorre cada carácter de la cadena word. counter es un índice que comienza en 0 y aumenta hasta que alcanza la longitud de word.
     const caracter = word[counter];
     // En cada iteración del bucle, caracter almacena el carácter actual de word.
-    if ('aeiou'.includes(caracter)) {
+    if ('aeiouAEIOU'.includes(caracter)) {
     // Aquí verificamos si el carácter actual es una vocal, ya sea en minúscula o mayúscula. Usamos el método includes para comprobar si caracter está en la cadena 'aeiouAEIOU'.
-      result += caracter.toUpperCase();
+      newWord += caracter.toUpperCase();
     } else {
-    // Si el carácter es una vocal, lo convertimos a mayúscula y lo agregamos a result. Si no es una vocal, simplemente lo agregamos tal cual:
-      result += caracter;
+    // Si el carácter es una vocal, lo convertimos a mayúscula y lo agregamos a newWord. Si no es una vocal, simplemente lo agregamos tal cual:
+      newWord += caracter;
     }
   }
-  console.log(result);
-}
+  console.log(newWord);
+};
 
 capitalVocals('periquito');
+
+
+/* TAMBIÉN LO PODEMOS HACER CON FOR OF 
+
+const vocalsUpperCase = word => {
+  const vowels = 'aeiouAEIOU'; 
+  let newWord = ''; 
+  for (const letter of word) {
+    if (vowels.includes(letter)) {
+      newWord += letter.toUpperCase();
+    } else {
+      newWord += letter; 
+    }
+    return newWord;
+  }
+};
+
+console.log(vocalsUpperCase('pequiquito')); */
+
 
 /* Crea una función que reciba una frase e imprima el número de veces que se repite cada vocal, por ejemplo para la frase "Enrique ordeña cabras", el resultado por consola debe ser:
   a: 3,
@@ -212,18 +231,84 @@ capitalVocals('periquito');
     if (letter === 'a') {
       aCounter++;
     } else if (letter === 'e') {
-      eCounter
+      eCounter++;
+    } else if (letter === 'i') {
+      iCounter++;
+    } else if (letter === 'o') {
+      oCounter++;
+    } else if (letter === 'u') {
+      uCounter++;
     }
   }
+  console.log(`a: ${aCounter}, e: ${eCounter}, i: ${iCounter}, o: ${oCounter}, u: ${uCounter}`); 
+
 }
-  console.log(à: ${aCounter}, )
 
-  
-
-  vocalsCount('Enrique ordeña cabras')
+  vocalsCount('Enrique ordeña cabras');
 
 // Crea una función que reciba dos palabras e intercale las letras de cada una para formar una nueva palabra. Si la función recibe (hola, adios) el resultado será "haodliao", pero si recibe (adios, hola) el resultado será "ahdoiloa"
 
+const mixWord = (word1, word2) => {
+  let result = ''; 
+  let shortestWord; 
+
+  if (word1.length <= word2.length) {
+  shortestWord = word1;
+} else { 
+  shortestWord = word2; 
+}
+
+for (let index = 0; index < shortestWord.length; index++) {
+  result += word1[index];
+  result += word2[index]; 
+}
+return result; 
+};
+
+console.log(mixWord('hola', 'adios'));
+
 // Crea una función que reciba una palabra e imprima la misma palabra en orden inverso conservando las mayúsculas y las minúsculas. Si recibe "Mariposas" deberá imprimir "sasopiraM"
 
+const wordReverse = word => { 
+  let reversedWord = '';
+
+  for (let counter = word.length - 1; counter >= 0; counter--) {
+    reversedWord += word[counter];
+  }
+
+  console.log(reversedWord);
+}
+
+wordReverse('Mariposas');
+
+
 // Crea una función que reciba un array con 5 palabras, debes imprimir por consola un array que contenga la inicial y la última letra de cada palabra en mayúsculas, es decir, si nuestra función recibiera un array con ['hola', 'adios', 'gato', 'perro', 'casa'] deberá imprimir por consola ['H', 'A', 'A', 'S', 'G', 'O', 'P','O', 'C', 'A']
+
+/* MALA EJECUCIÓN
+
+const initialsArray = words => {
+  let result1 = '';
+  let result2 = '';
+  const toUpperCase = words.toUpperCase();
+
+  for (let counter = 0; counter < words.length; counter++) {
+  result1.push[0];
+  result2.push[-1];
+  }
+console.log(toUpperCase);
+}
+
+initialsArray('hola', 'adios', 'gato', 'perro', 'casa'); */
+
+const initialsArray = words => {
+  let result = []; 
+
+  for (let word of words) {
+    result.push(word[0].toUpperCase());
+    result.push(word[word.length - 1].toUpperCase());
+  }
+
+  console.log(result);
+}
+
+initialsArray(['hola', 'adios', 'gato', 'perro', 'casa']);
